@@ -1,11 +1,23 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="#">Annuaire</a>
-        <a class="p-2 text-dark" href="#">Evenements</a>
-        <a class="p-2 text-dark" href="#">Support</a>
-        <a class="p-2 text-dark" href="#">Pricing</a>
-    </nav>
-    <a class="btn btn-outline-primary" href="#">Sign up</a>
+    <h5 class="my-0 mr-md-auto font-weight-normal">Moostack</h5>
+    @if(!Auth::check())
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="{{ action('App\StaticsController@showAnnuaire') }}">Annuaire</a>
+            <a class="p-2 text-dark" href="{{ action('App\EventsController@index') }}">Evenements</a>
+        </nav>
+        <a class="btn btn-outline-primary" href="{{ action('Auth\LoginController@showLoginForm') }}">Connexion</a>
+    @else
+        <nav class="my-2 my-md-0 mr-md-3">
+            
+            <a class="p-2 text-dark" href="{{ action('App\StaticsController@showAnnuaire') }}">Mon Dashboard</a>
+            <a class="p-2 text-dark" href="{{ action('App\EventsController@index') }}">Mon Book</a>
+            <a class="p-2 text-dark" href="{{ action('App\EventsController@index') }}">Mes Documents</a>
+            <a class="p-2 text-dark" href="{{ action('App\EventsController@index') }}">Mes Compétences</a>
+            <a class="p-2 text-dark" href="{{ action('App\StaticsController@showAnnuaire') }}">Annuaire</a>
+            <a class="p-2 text-dark" href="{{ action('App\EventsController@index') }}">Recherche</a>
+        </nav>
+        <a class="btn btn-outline-primary" href="{{ action('App\AccountController@logout') }}">Déconnexion</a>
+    @endif
+
 </div>
 

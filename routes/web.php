@@ -13,5 +13,24 @@
 
 Route::get('/', ['uses' => 'App\StaticsController@showHome']);
 
+
+//STATICS ROUTES
+
+Route::get('/showAnnuaire', ['uses' => 'App\StaticsController@showAnnuaire'])->name('anuaire');
+
+
+//EVENTS ROUTES
+Route::prefix('/events')->group(function(){
+    Route::get('/', ['uses' => 'App\EventsController@index']);
+});
+
+
+
+//ACCOUNT ROUTES
+Route::prefix('/account')->group(function(){
+    Route::get('/logout', ['uses' => 'App\AccountController@logout']);
+});
+
+
 Auth::routes();
 
