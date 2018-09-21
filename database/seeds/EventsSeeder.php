@@ -18,7 +18,7 @@ class EventsSeeder extends Seeder
                 "name"    => "Evenement N'" . $i,
                 "content" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aliquid amet aperiam at blanditiis, dignissimos dolorem earum incidunt ipsum magnam minima porro possimus, rem repellat suscipit ullam velit voluptate." . $i,
                 "date"    => now(),
-                "fk_user_id" => rand(1, 100),
+                "fk_user_id" => rand(1, 5),
                 "created_at" => now()
             ]);
         }

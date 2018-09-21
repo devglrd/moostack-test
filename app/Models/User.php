@@ -8,10 +8,11 @@ use App\Models\File;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasApiTokens;
     
     /**
      * The attributes that are mass assignable.
@@ -45,6 +46,11 @@ class User extends Authenticatable
     public function getNotes()
     {
         return $this->hasMany(Evaluation::class, "fk_user_id", "id");
+    }
+    
+    public function getSkills()
+    {
+        return $this->belongsToMany(Skill::class, 'skills_users', 'fk_user_id', 'fk_skill_id');
     }
     
 }

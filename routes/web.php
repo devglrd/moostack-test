@@ -20,15 +20,25 @@ Route::get('/recherche', ['uses' => 'App\StaticsController@showSearch'])->name('
 
 
 //EVENTS ROUTES
-Route::prefix('/events')->group(function(){
+Route::prefix('/events')->group(function () {
     Route::get('/', ['uses' => 'App\EventsController@index']);
 });
 
 
-
 //ACCOUNT ROUTES
-Route::prefix('/account')->group(function(){
+Route::group(['prefix' => 'account', 'middleware' => 'auth'], function () {
     Route::get('/logout', ['uses' => 'App\AccountController@logout']);
+});
+
+//AUTH ROUTES
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', ['uses' => 'App\AccountController@showDashboard']);
+    Route::get('/book', ['uses' => 'App\AccountController@showAccount']);
+    Route::get('/documents', ['uses' => 'App\AccountController@showDocument']);
+    Route::get('/competences', ['uses' => 'App\AccountController@showSkill']);
+    Route::get('/evaluation', ['uses' => 'App\AccountController@showEvaluations']);
+    
+    
 });
 
 

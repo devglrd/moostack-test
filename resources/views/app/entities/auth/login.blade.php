@@ -1,5 +1,22 @@
-@extends('
-app')
+@extends('app')
+
+@section('js')
+    <script>
+        $(document).ready(function(){
+            $('button[type="submit"]').on('click', function(e){
+                e.preventDefault();
+                
+                let email = $('input[name="email"]').val();
+                let password = $('input[name="password"]').val();
+                console.log(email);
+                console.log(password);
+                const url = "{{ URL::to('/api/users') }}/"+email;
+                console.log(url);
+                axios.get(url).then((res) => console.log(res))
+            });
+        })
+    </script>
+    @stop
 
 @section('content')
 <div class="container">
@@ -10,7 +27,7 @@ app')
 
                 <div class="card-body">
                     <form method="POST" action="{{ action('Auth\LoginController@login') }}">
-                        @csrf
+                        {{csrf_field()}}
 
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

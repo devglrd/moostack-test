@@ -16,10 +16,7 @@ class StaticsController extends Controller
         return view(self::PATH_VIEW . "home")->with([
         
         ]);
-        
-        
     }
-    
     
     public function showAnnuaire(Request $request)
     {
@@ -29,10 +26,11 @@ class StaticsController extends Controller
         ]);
     }
     
-    
     public function showSearch(Request $request)
     {
         return view(self::PATH_VIEW . "search")->with([
         ]);
     }
+    
+    
 }

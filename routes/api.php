@@ -16,3 +16,13 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:api')->group(function (){
+    Route::get('/test', function (Request $request){
+       dd($request);
+    });
+    Route::get('/books', ['uses' => "Api\AccountController@index"]);
+});
+
+Route::get('/events', ['uses' => "Api\EventsController@index"]);
+Route::get('/events', ['uses' => "Api\EventsController@index"]);

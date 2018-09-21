@@ -8,11 +8,11 @@
         <a class="btn btn-outline-primary" href="{{ action('Auth\LoginController@showLoginForm') }}">Connexion</a>
     @else
         <nav class="my-2 my-md-0 mr-md-3">
-            
-            <a class="p-2 text-dark" href="{{ action('App\StaticsController@showAnnuaire') }}">Mon Dashboard</a>
-            <a class="p-2 text-dark" href="{{ action('App\EventsController@index') }}">Mon Book</a>
-            <a class="p-2 text-dark" href="{{ action('App\EventsController@index') }}">Mes Documents</a>
-            <a class="p-2 text-dark" href="{{ action('App\EventsController@index') }}">Mes Compétences</a>
+            <a class="p-2 text-dark" href="{{ action('App\AccountController@showDashboard') }}">Mon Dashboard</a>
+            <a class="p-2 text-dark" href="{{ action('App\AccountController@showAccount') }}">Mon Book</a>
+            <a class="p-2 text-dark" href="{{ action('App\AccountController@showDocument') }}">Mes Documents</a>
+            <a class="p-2 text-dark" href="{{ action('App\AccountController@showSkill') }}">Mes Compétences</a>
+            <a class="p-2 text-dark" href="{{ action('App\AccountController@showEvaluations') }}">Mes évaluations</a>
             <a class="p-2 text-dark" href="{{ action('App\StaticsController@showAnnuaire') }}">Annuaire</a>
             <a class="p-2 text-dark" href="{{ action('App\StaticsController@showSearch') }}">Recherche</a>
         </nav>
