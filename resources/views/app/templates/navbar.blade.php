@@ -14,7 +14,7 @@
             <a class="p-2 text-dark" href="{{ action('App\EventsController@index') }}">Mes Documents</a>
             <a class="p-2 text-dark" href="{{ action('App\EventsController@index') }}">Mes Compétences</a>
             <a class="p-2 text-dark" href="{{ action('App\StaticsController@showAnnuaire') }}">Annuaire</a>
-            <a class="p-2 text-dark" href="{{ action('App\EventsController@index') }}">Recherche</a>
+            <a class="p-2 text-dark" href="{{ action('App\StaticsController@showSearch') }}">Recherche</a>
         </nav>
         <a class="btn btn-outline-primary" href="{{ action('App\AccountController@logout') }}">Déconnexion</a>
     @endif

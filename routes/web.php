@@ -15,8 +15,8 @@ Route::get('/', ['uses' => 'App\StaticsController@showHome']);
 
 
 //STATICS ROUTES
-
-Route::get('/showAnnuaire', ['uses' => 'App\StaticsController@showAnnuaire'])->name('anuaire');
+Route::get('/annuaire', ['uses' => 'App\StaticsController@showAnnuaire'])->name('anuaire');
+Route::get('/recherche', ['uses' => 'App\StaticsController@showSearch'])->name('search');
 
 
 //EVENTS ROUTES

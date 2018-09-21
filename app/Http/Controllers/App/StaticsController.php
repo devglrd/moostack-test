@@ -28,4 +28,11 @@ class StaticsController extends Controller
             "users" => $users
         ]);
     }
+    
+    
+    public function showSearch(Request $request)
+    {
+        return view(self::PATH_VIEW . "search")->with([
+        ]);
+    }
 }
