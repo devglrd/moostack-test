@@ -5,24 +5,38 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ApiController extends Controller
 {
-    public function userOauthInfo(Request $request)
+    
+    public function loginUser(Request $request)
     {
         if (!$request->password || !$request->email) {
             return response()->json(["error" => "You should passe credentials"]);
         }
         $user = User::where('email', $request->email)->first();
-        if (!$user){
+        if (!$user) {
             return response()->json(["error" => "No user found in db"]);
         }
-        if (Hash::check($request->password, $user->password)) {
-            return response()->json(['client_id' => $user->getOauth->id, "secret" => $user->getOauth->secret]);
-        }else{
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            Auth::login($user);
+            $access_token = Auth::user()->createToken('login')->accessToken;
+            
+            return response()->json(["access_token" => $access_token]);
+        } else {
             return response()->json(["error" => "Wrong credentials"]);
         }
-        
+    }
+    
+    public function getAccessToken(Request $request)
+    {
+        if (Auth::check()) {
+            $access_token = Auth::user()->createToken('login')->accessToken;
+            return response()->json(["access_token" => $access_token]);
+        } else {
+            return response()->json(["error" => "You are not logged in"]);
+        }
     }
 }

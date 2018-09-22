@@ -20,6 +20,9 @@ class AccountController extends Controller
     {
         if (Auth::check()){
             Auth::logout();
+            if (session()->has('baerer')){
+                session()->forget("baerer");
+            }
             return redirect()->back()->with("success", "Vous êtes bien deconctée");
         }
         return redirect()->back();

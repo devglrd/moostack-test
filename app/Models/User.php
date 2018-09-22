@@ -53,9 +53,4 @@ class User extends Authenticatable
         return $this->belongsToMany(Skill::class, 'skills_users', 'fk_user_id', 'fk_skill_id');
     }
     
-    public function getOauth()
-    {
-        return $this->hasOne(OauthClient::class, "user_id", "id");
-    }
-    
 }

@@ -1,10 +1,13 @@
 @extends('app')
 
 @section('js')
+    
+    {{--//AJAX CONNEXION--}}
     <script>
         $(document).ready(function () {
             $('button[type="submit"]').on('click', function (e) {
-                e.preventDefault();
+                //cancel submit form;
+                // e.preventDefault();
 
                 let email = $('input[name="email"]').val();
                 let password = $('input[name="password"]').val();
@@ -14,29 +17,20 @@
                 let data = {
                     email,
                     password
-                }
-
+                };
                 axios.post(url, data).then((res) => {
-                    let secret = res.data.secret;
-                    let client_id = res.data.client_id;
-
-                    let url = "{{ URL::to('/oauth/token') }}";
-                    let data = {
-                        "grant_type": "password",
-                        "client_id": client_id.toString(),
-                        "client_secret": secret,
-                        'redirect_uri': 'http://localhost:8000',
-                        "username": email,
-                        "password": password,
-                        'scope': '*',
+                    $('.zone span').empty();
+                    if (res.data.error){
+                        $('.zone span').append(res.data.error);
+                        return;
                     }
-                    console.log(data);
-                    axios.post(url, data).then(result => {
-                        console.log(result)
-                        if (result.data.access_token) {
-                            $('.zone span').append("Vous êtes connetée, votre Bareer token => <br>" + result.data.access_token);
+                    if (res.data.access_token){
+                        if (res.data.access_token) {
+                            $('.zone span').append("Vous êtes connetée, votre Bareer token => <br>");
+                            $('.baerer').css('display', "block");
+                            $('.baerer').val(res.data.access_token)
                         }
-                    })
+                    }
                 })
             });
         })
@@ -110,6 +104,9 @@
                                         <span>
                                         
                                         </span>
+                                    </div>
+                                    <div class="" >
+                                        <input type="" class="form-control baerer" value="" style="display: none">
                                     </div>
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}

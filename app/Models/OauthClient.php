@@ -8,4 +8,6 @@ class OauthClient extends Model
 {
     protected $table = "oauth_clients";
     protected $guarded = ['secret'];
+    
+    
 }
