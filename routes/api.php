@@ -18,11 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:api')->group(function (){
-    Route::get('/test', function (Request $request){
-       dd($request);
-    });
-    Route::get('/books', ['uses' => "Api\AccountController@index"]);
+    Route::get('/competences', ['uses' => "Api\AccountController@getCompetences"]);
+    Route::get('/evaluations', ['uses' => "Api\AccountController@getNotes"]);
+    Route::get('/documents', ['uses' => "Api\AccountController@getDocument"]);
+    Route::get('/account', ['uses' => "Api\AccountController@getAccount"]);
 });
 
 Route::get('/events', ['uses' => "Api\EventsController@index"]);
-Route::get('/events', ['uses' => "Api\EventsController@index"]);
+Route::post('/users/oauth', ['uses' => "Api\ApiController@userOauthInfo"]);
