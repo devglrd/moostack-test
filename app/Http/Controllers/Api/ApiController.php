@@ -23,7 +23,6 @@ class ApiController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             Auth::login($user);
             $access_token = Auth::user()->createToken('login')->accessToken;
-            
             return response()->json(["access_token" => $access_token]);
         } else {
             return response()->json(["error" => "Wrong credentials"]);

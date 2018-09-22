@@ -26,4 +26,4 @@ Route::middleware('auth:api')->group(function (){
 
 Route::get('/events', ['uses' => "Api\EventsController@index"]);
 Route::post('/users/login/oauth', ['uses' => "Api\ApiController@loginUser"]);
-Route::post('/users/oauth', ['uses' => "Api\ApiController@getAccessToken"]);
+Route::post('/users/oauth/token', ['uses' => "Api\ApiController@getAccessToken"]);
