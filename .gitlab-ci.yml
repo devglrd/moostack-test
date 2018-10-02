@@ -11,6 +11,7 @@ services:
 
 variables:
   MYSQL_DATABASE: testMoostack
+  MYSQL_USERNAME: root
   MYSQL_ROOT_PASSWORD:
 
 # This folder is cached between builds
