@@ -88,12 +88,18 @@ class ApiTest extends TestCase
     public function testApiRoutesUserLoginWithWrongCredentials()
     {
         $response = $this->post('api/users/login/oauth', ['email' => "hello@moostack.com", 'password' => "password321"]);
-        $response->assertStatus(200)->assertExactJson(['error' => "Wrong credentials"]);
+        $response->assertStatus(401)->assertExactJson(['error' => "Wrong credentials"]);
+    }
+    
+    public function testApiRoutesUserLoginWithNoEmailInDb()
+    {
+        $response = $this->post('api/users/login/oauth', ['email' => "hello1323@moostack.com", 'password' => "password321"]);
+        $response->assertStatus(404)->assertExactJson(['error' => "No user found in db"]);
     }
     
     public function testApiRoutesUserWithoutCredentialsLogin()
     {
         $response = $this->post('api/users/login/oauth');
-        $response->assertStatus(200)->assertExactJson(['error' => "You should passe credentials"]);
+        $response->assertStatus(400)->assertExactJson(['error' => "You should passe credentials"]);
     }
 }
