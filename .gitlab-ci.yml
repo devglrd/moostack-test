@@ -22,7 +22,7 @@ before_script:
 #  - docker-php-ext-enable xdebug
   - curl -sS https://getcomposer.org/installer | php
   - php composer.phar install
-  - npm install
+#  - npm install
   - cp .env.example .env
   - npm run dev
   - php artisan key:generate
