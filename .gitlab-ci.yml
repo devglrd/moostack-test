@@ -24,7 +24,7 @@ before_script:
   - php composer.phar install
 #  - npm install
   - cp .env.example .env
-  - npm run dev
+#  - npm run dev
   - php artisan key:generate
   - php artisan config:cache
   - php artisan migrate
