@@ -29,6 +29,7 @@ before_script:
   - php artisan config:cache
   - php artisan migrate
   - php artisan db:seed
+  - php artisan passport:install
 test:
   script:
   - php vendor/bin/phpunit
