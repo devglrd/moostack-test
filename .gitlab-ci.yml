@@ -31,5 +31,5 @@ before_script:
   - php artisan db:seed
 test:
   script:
-  - php vendor/bin/phpunit --coverage-text --colors=true
+  - php vendor/bin/phpunit
 
