@@ -1,4 +1,4 @@
-image: php:latest
+image: thecodingmachine/php:7.2-v1-fpm
 
 services:
   - mysql:latest
