@@ -18,6 +18,7 @@ class ApiController extends Controller
         }
         $user = User::where('email', $request->email)->first();
         if (!$user) {
+            //okokokokokok
             return response()->json(["error" => "No user found in db"], 404);
         }
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
